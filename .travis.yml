@@ -1,0 +1,8 @@
+language: csharp
+solution: ru.itpc.trial.sln
+install:
+  - nuget restore ru.itpc.trial.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release solution-name.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./ru.itpc.trial.test/bin/Release/ru.itpc.trial.test.dll
